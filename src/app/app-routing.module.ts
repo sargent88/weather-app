@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'app', component: LayoutComponent, children: [
     { path: 'dashboard', loadChildren: 'app/features/dashboard/dashboard.module#DashboardModule' },
     { path: 'manage', loadChildren: 'app/features/manage/manage.module#ManageModule' },
-  ] }
+  ] },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
