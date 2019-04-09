@@ -6,8 +6,8 @@ import { LayoutComponent } from './core/layout/layout.component';
 const routes: Routes = [
   { path: '', redirectTo: 'app/dashboard', pathMatch: 'full' },
   { path: 'app', component: LayoutComponent, children: [
-    { path: 'dashboard', loadChildren: 'app/features/dashboard/dashboard.module#DashboardModule' },
-    { path: 'manage', loadChildren: 'app/features/manage/manage.module#ManageModule' },
+    { path: 'dashboard', loadChildren: './features/dashboard/dashboard.module#DashboardModule' },
+    { path: 'manage', loadChildren: './features/manage/manage.module#ManageModule' },
   ] },
   { path: '**', redirectTo: '' },
 ];
