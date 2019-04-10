@@ -1,3 +1,33 @@
-<p>
-  manage-weather works!
-</p>
+<button mat-mini-fab color="primary" (click)="addLocation()">
+  <mat-icon>add</mat-icon>
+</button>
+<table mat-table #table [dataSource]="weatherData">
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef> City </th>
+    <td mat-cell *matCellDef="let row"> {{row.city}} </td>
+  </ng-container>
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef> State </th>
+    <td mat-cell *matCellDef="let row"> {{row.state}} </td>
+  </ng-container>
+  <ng-container matColumnDef="zip_code">
+    <th mat-header-cell *matHeaderCellDef> Zip Code </th>
+    <td mat-cell *matCellDef="let row"> {{row.zip_code}} </td>
+  </ng-container>
+  <ng-container matColumnDef="forecast">
+    <th mat-header-cell *matHeaderCellDef> Forecast? </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox [(ngModel)]="row.forecast" (change)="toggle(row)"></mat-checkbox>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button (click)="deleteRow(row.id)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

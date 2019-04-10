@@ -7,6 +7,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutComponent } from './layout/layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { MaterialModule } from '../shared/material.module';
+import { DashboardService } from './services/dashboard.service';
+import { ManageService } from './services/manage.service';
+import { CacheService } from './services/cache.service';
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -23,7 +26,9 @@ import { MaterialModule } from '../shared/material.module';
     AppRoutingModule
   ],
   providers: [
-
+    DashboardService,
+    ManageService,
+    CacheService
   ]
 })
 export class CoreModule { }
