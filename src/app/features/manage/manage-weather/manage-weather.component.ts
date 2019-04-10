@@ -1,4 +1,4 @@
-import { CacheService } from './../../../core/services/cache.service';
+import { WeatherService } from '../../../core/services/weather.service';
 import { WeatherType } from './../../../core/types/weather-type';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,11 +12,11 @@ export class ManageWeatherComponent implements OnInit {
   displayedColumns: string[] = ['city', 'state', 'zip_code', 'forecast', 'delete'];
 
   constructor(
-    private cacheService: CacheService
+    private weatherService: WeatherService
   ) { }
 
   ngOnInit() {
-    const weatherObservable = this.cacheService.getWeather();
+    const weatherObservable = this.weatherService.getWeather();
     weatherObservable.subscribe((weather: WeatherType[]) => {
       this.weatherData = weather;
     })

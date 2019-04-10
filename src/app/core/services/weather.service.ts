@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
-import { WeatherType } from './../types/weather-type';
+import { WeatherType } from '../types/weather-type';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CacheService {
+export class WeatherService {
   weather: WeatherType[] = [
     {id: 1,
       city: 'Laguna Hills',
