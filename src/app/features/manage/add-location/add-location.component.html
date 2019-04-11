@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Add Location</h1>
+<div mat-dialog-content>
+  <form [formGroup]="addLocationForm">
+    <mat-form-field>
+      <input matInput placeholder="Zip Code" formControlName="zip_code" type="text" pattern="[0-9]{1,5}" maxlength="5">
+      <mat-hint>Please enter 5 digit Zip Code.</mat-hint>
+      <mat-error *ngIf="addLocationForm.get('zip_code').hasError('required')">
+        You must enter in an Zip Code.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div class="mat-dialog-actions">
+  <button mat-stroked-button color="primary" (click)="addLocation(addLocationForm.value)" [disabled]="addLocationForm.invalid">Add</button>
+  <button mat-stroked-button color="warn" (click)="closeDialog()">Cancel</button>
+</div>

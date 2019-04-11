@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ManageComponent } from './manage.component';
 import { ManageWeatherComponent } from './manage-weather/manage-weather.component';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 const routes: Routes = [
   { path: '', component: ManageComponent, children: [
@@ -15,12 +16,16 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ManageComponent,
-    ManageWeatherComponent
+    ManageWeatherComponent,
+    AddLocationComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule
+  ],
+  entryComponents: [
+    AddLocationComponent
   ]
 })
 export class ManageModule { }
