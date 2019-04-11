@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <mat-icon>wb_sunny</mat-icon>
-    <span>Weather App</span>
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <span>
+      <button mat-icon-button color="accent" routerLink="/">
+        <mat-icon>wb_sunny</mat-icon>
+      </button>Weather App
+    </span>
     <div>
-      <a routerLink="/app/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/app/manage" routerLinkActive="active">Manage</a>
+      <a mat-button routerLink="/app/dashboard" routerLinkActive="active">Dashboard</a>
+      <a mat-button routerLink="/app/manage" routerLinkActive="active">Manage</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

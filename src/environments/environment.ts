@@ -4,15 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: '',
-  firebase: {
-    apiKey: "",
-    authDomain: "weather-app-47dd0.firebaseapp.com",
-    databaseURL: "https://weather-app-47dd0.firebaseio.com",
-    projectId: "weather-app-47dd0",
-    storageBucket: "weather-app-47dd0.appspot.com",
-    messagingSenderId: "557514266893"
-  }
+  baseUrl: 'http://dataservice.accuweather.com/',
+
 };
 
 /*

@@ -15,10 +15,12 @@ export class WeatherDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const weatherObservable = this.weatherService.getWeather();
-    weatherObservable.subscribe((weather: WeatherType[]) => {
-      this.weatherData = weather;
-    })
+    this.fetchLocations();
+  }
+
+  fetchLocations() {
+    this.weatherService.weather
+    .subscribe((res) => {this.weatherData = res})
   }
 
 }
