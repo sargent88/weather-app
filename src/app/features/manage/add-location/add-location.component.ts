@@ -26,10 +26,9 @@ export class AddLocationComponent implements OnInit {
   }
 
   addLocation(obj) {
-    let id = Number(localStorage.getItem('idNumber'));
-    let key = localStorage.getItem('apiKey')
+    // This is just setting the object to the perdefined Weater Type variable that I defined earlier. Ideally a backend would help clean this up as the res would be better suited to our request //
+    let key = localStorage.getItem('apiKey');
     this.locationObj = {
-      id: id,
       key: '',
       city: '',
       state: '',
@@ -42,11 +41,12 @@ export class AddLocationComponent implements OnInit {
           this.locationObj.key = res[0].Key;
           this.locationObj.city = res[0].LocalizedName;
           this.locationObj.state = res[0].AdministrativeArea.ID;
-          console.log(this.locationObj)
-          this.weatherService.updateLocations(this.locationObj)
+          // This adds the new locationObj to the cached value in the weather service for access across the app. Takes the place of a post request since there is no backend. //
+          this.weatherService.updateLocations(this.locationObj);
         },
+        // Not much to do with err right now, this will just dispaly it to the console. //
         (err) => {console.log(err)},
-        () => {}
+        () => {this.closeDialog();}
       )
   }
 

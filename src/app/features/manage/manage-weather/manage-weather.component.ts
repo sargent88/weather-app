@@ -13,7 +13,6 @@ export class ManageWeatherComponent implements OnInit {
   weatherData: WeatherType[] = [];
   displayedColumns: string[] = ['city', 'state', 'zip_code', 'forecast', 'delete'];
   loadingResults: boolean = false;
-  idNumber: any;
 
   constructor(
     private weatherService: WeatherService,
@@ -30,28 +29,33 @@ export class ManageWeatherComponent implements OnInit {
     .subscribe(
       (res) => {
         this.weatherData = res;
-        // A database would handle automatic increasing ids (or provide uuids), this is a frontend work around //
-        this.idNumber = res.length+1;
-        localStorage.setItem('idNumber', this.idNumber)
         this.loadingResults = false;
       }
     )
   }
 
-  deleteRow(id) {
-    console.log(id)
-  }
-
   addLocation(): void {
     const dialogRef = this.dialog.open(AddLocationComponent, {
       width: '300px',
-    height: 'auto'
-  });
-  dialogRef.afterClosed().subscribe((res) => console.log(res))
+      height: 'auto'
+    });
+    dialogRef.afterClosed().subscribe()
   }
 
+  deleteRow(id) {
+    let deleteId = this.weatherData.indexOf(id);
+    this.weatherData.splice(deleteId, 1);
+    this.weatherService.deleteLocation();
+  }
+  
   toggle(id) {
-    console.log(id)
+    let forecastToggle = this.weatherData.indexOf(id);
+    let val = this.weatherData[forecastToggle].forecast
+    if (val) {
+      val = false;
+    } else if(!val) {
+      val = true;
+    }
   }
 
 }

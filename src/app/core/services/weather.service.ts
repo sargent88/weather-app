@@ -9,24 +9,21 @@ import { environment } from '../../../environments/environment';
 export class WeatherService {
   private weatherSource = new BehaviorSubject(
     [
-      {id: 1,
-        key: '38800_PC',
+      {key: '38800_PC',
         city: 'Laguna Hills',
         state: 'CA',
         zip_code: 92653,
         forecast: true},
-      {id: 2,
-        key: '36223_PC',
+      {key: '36223_PC',
         city: 'Orem',
         state: 'UT',
         zip_code: 84059,
         forecast: true},
-      {id: 5,
-        key: '39714_PC',
+      {key: '39714_PC',
         city: 'Cupertino',
         state: 'CA',
         zip_code: 95014,
-        forecast: true},
+        forecast: false},
     ]
   )
   weather = this.weatherSource.asObservable();
@@ -37,9 +34,15 @@ export class WeatherService {
   ) { }
   
   updateLocations(weatherObj) {
-    this.weatherSource.next([...this.weatherSource.getValue(),...weatherObj]);
-    console.log('weather source: ', this.weatherSource)
-    console.log('weather: ', this.weather)
+    this.weatherSource.next(
+      [...this.weatherSource.getValue(),...weatherObj]
+    );
+  }
+
+  deleteLocation() {
+    this.weatherSource.next(
+      [...this.weatherSource.getValue()]
+      )
   }
 
   addLocation(zip, key) {
