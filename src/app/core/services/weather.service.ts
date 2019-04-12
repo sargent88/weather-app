@@ -27,7 +27,6 @@ export class WeatherService {
     ]
   )
   weather = this.weatherSource.asObservable();
-  //Dummy Authentication
 
   constructor(
     private http: HttpClient
@@ -47,6 +46,14 @@ export class WeatherService {
 
   addLocation(zip, key) {
     return this.http.get(`${environment.baseUrl}locations/v1/postalcodes/US/search?apikey=${key}&q=${zip}`)
+  }
+
+  getWeather(code, key) {
+    return this.http.get(`${environment.baseUrl}forecasts/v1/daily/5day/${code}?apikey=${key}`)
+  }
+
+  get5DayForecast(code, key) {
+    return this.http.get(`${environment.baseUrl}currentconditions/v1/${code}?apikey=${key}`)
   }
 
 }
