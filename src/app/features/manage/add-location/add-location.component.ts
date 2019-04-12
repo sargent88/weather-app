@@ -26,7 +26,16 @@ export class AddLocationComponent implements OnInit {
   }
 
   addLocation(obj) {
-    console.log(obj.zip_code)
+    let id = Number(localStorage.getItem('idNumber'));
+    this.weatherService.addLocation(obj.zip_code);
+    let newObj = {
+      id: id,
+      city: 'Random',
+      state: 'SD',
+      zip_code: obj.zip_code,
+      forecast: false
+    }
+    this.weatherService.updateLocations(newObj)
   }
 
   closeDialog(): void {

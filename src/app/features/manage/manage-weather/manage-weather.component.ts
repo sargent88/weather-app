@@ -13,6 +13,7 @@ export class ManageWeatherComponent implements OnInit {
   weatherData: WeatherType[] = [];
   displayedColumns: string[] = ['city', 'state', 'zip_code', 'forecast', 'delete'];
   loadingResults: boolean = false;
+  idNumber: any;
 
   constructor(
     private weatherService: WeatherService,
@@ -29,6 +30,9 @@ export class ManageWeatherComponent implements OnInit {
     .subscribe(
       (res) => {
         this.weatherData = res;
+        // A database would handle automatic increasing ids (or provide uuids), this is a frontend work around //
+        this.idNumber = res.length+1;
+        localStorage.setItem('idNumber', this.idNumber)
         this.loadingResults = false;
       }
     )
