@@ -27,15 +27,27 @@ export class AddLocationComponent implements OnInit {
 
   addLocation(obj) {
     let id = Number(localStorage.getItem('idNumber'));
-    this.weatherService.addLocation(obj.zip_code);
-    let newObj = {
+    let key = localStorage.getItem('apiKey')
+    this.locationObj = {
       id: id,
-      city: 'Random',
-      state: 'SD',
+      key: '',
+      city: '',
+      state: '',
       zip_code: obj.zip_code,
       forecast: false
     }
-    this.weatherService.updateLocations(newObj)
+    this.weatherService.addLocation(obj.zip_code, key)
+      .subscribe(
+        (res) => {
+          this.locationObj.key = res[0].Key;
+          this.locationObj.city = res[0].LocalizedName;
+          this.locationObj.state = res[0].AdministrativeArea.ID;
+          console.log(this.locationObj)
+          this.weatherService.updateLocations(this.locationObj)
+        },
+        (err) => {console.log(err)},
+        () => {}
+      )
   }
 
   closeDialog(): void {

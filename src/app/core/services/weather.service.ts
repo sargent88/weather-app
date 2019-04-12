@@ -31,7 +31,6 @@ export class WeatherService {
   )
   weather = this.weatherSource.asObservable();
   //Dummy Authentication
-  apiKey: string = localStorage.getItem('apikey');
 
   constructor(
     private http: HttpClient
@@ -43,9 +42,8 @@ export class WeatherService {
     console.log('weather: ', this.weather)
   }
 
-  addLocation(zip) {
-    // console.log('zip in service: ', zip)
-    // return this.http.get(`locations/v1/postalcodes/search`)
+  addLocation(zip, key) {
+    return this.http.get(`${environment.baseUrl}locations/v1/postalcodes/US/search?apikey=${key}&q=${zip}`)
   }
 
 }
