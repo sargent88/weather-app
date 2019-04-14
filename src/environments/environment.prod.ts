@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseurl: 'http://dataservice.accuweather.com/',
+  baseUrl: 'http://dataservice.accuweather.com/',
 
 };
