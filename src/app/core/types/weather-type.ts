@@ -1,5 +1,5 @@
 export interface WeatherType {
-    key: string;
+    code: string;
     city: string;
     state: string;
     zip_code: number;

@@ -9,17 +9,17 @@ import { environment } from '../../../environments/environment';
 export class WeatherService {
   private weatherSource = new BehaviorSubject(
     [
-      {key: '38800_PC',
+      {code: '38800_PC',
         city: 'Laguna Hills',
         state: 'CA',
         zip_code: 92653,
         forecast: true},
-      {key: '36223_PC',
+      {code: '36223_PC',
         city: 'Orem',
         state: 'UT',
         zip_code: 84059,
         forecast: true},
-      {key: '39714_PC',
+      {code: '39714_PC',
         city: 'Cupertino',
         state: 'CA',
         zip_code: 95014,
@@ -49,11 +49,11 @@ export class WeatherService {
   }
 
   getWeather(code, key) {
-    return this.http.get(`${environment.baseUrl}forecasts/v1/daily/5day/${code}?apikey=${key}`)
+    return this.http.get(`${environment.baseUrl}currentconditions/v1/${code}?apikey=${key}`)
   }
 
   get5DayForecast(code, key) {
-    return this.http.get(`${environment.baseUrl}currentconditions/v1/${code}?apikey=${key}`)
+    return this.http.get(`${environment.baseUrl}forecasts/v1/daily/5day/${code}?apikey=${key}`)
   }
 
 }
