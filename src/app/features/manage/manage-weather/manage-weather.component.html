@@ -1,12 +1,15 @@
-<button mat-mini-fab color="primary" (click)="addLocation()">
-  <mat-icon>add</mat-icon>
-</button>
+<div class="locations-header">
+  <h1>Weather Locations</h1>
+  <button mat-mini-fab color="primary" (click)="addLocation()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 <div class="weather">
   <div class="weather-shade" *ngIf="loadingResults">
     <mat-spinner color="accent"></mat-spinner>
   </div>
   <div class="weather-table">
-    <table mat-table #table [dataSource]="weatherData">
+    <table mat-table #table [dataSource]="weatherData" class="locations-table">
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef> City </th>
         <td mat-cell *matCellDef="let row"> {{row.city}} </td>

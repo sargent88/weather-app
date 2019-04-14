@@ -1,28 +1,28 @@
-<!-- <div fxLayout="row" fxLayoutAlign="space-between start" class="weather-header"> -->
+<div fxLayout="row" fxLayoutAlign="space-between start" class="weather-header">
   <h1>Current Weather</h1>
   <mat-slide-toggle [checked]="metric" (change)="metricToggle($event)">Metric</mat-slide-toggle>
-<!-- </div> -->
-<div fxLayout="row wrap" fxLayoutGap="10px">
+</div>
+<div class="weather-div">
   <mat-card *ngFor="let weather of weatherData" fxFlex.lt-md="100%" fxFlex.md="50%" fxFlex.gt-md="25%" class="weather-card">
     <mat-card-header>
       <mat-card-title>{{weather.city}}, {{weather.state}}</mat-card-title>
       <mat-card-subtitle>{{weather.zip_code}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngIf="!metric">
-      <p>{{weather.temperature}}&#176;F, {{weather.condition}}</p>
+      <p>{{weather.temperature}}&#176;F - {{weather.condition}}</p>
       <div *ngIf="weather.forecast">
         <p><strong>5 Day Forecast</strong></p>
         <p *ngFor="let forecast of weather.five_day">
-          {{forecast.date | date:'EEEEEE'}} H:{{forecast.max}} L:{{forecast.min}}
+          {{forecast.date | date:'EEEEEE'}} - H:{{forecast.max}} L:{{forecast.min}}
         </p>
       </div>
     </mat-card-content>
     <mat-card-content *ngIf="metric">
-      <p>{{weather.temperature | fc}}&#176;C, {{weather.condition}}</p>
+      <p>{{weather.temperature | fc}}&#176;C - {{weather.condition}}</p>
       <div *ngIf="weather.forecast">
         <p><strong>5 Day Forecast</strong></p>
         <p *ngFor="let forecast of weather.five_day">
-          {{forecast.date | date:'EEEEEE'}} H:{{forecast.max | fc}} L:{{forecast.min | fc}}
+          {{forecast.date | date:'EEEEEE'}} - H:{{forecast.max | fc}} L:{{forecast.min | fc}}
         </p>
       </div>
     </mat-card-content>

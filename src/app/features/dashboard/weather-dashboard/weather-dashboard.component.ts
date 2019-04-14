@@ -9,39 +9,7 @@ import { WeatherService } from '../../../core/services/weather.service';
 })
 export class WeatherDashboardComponent implements OnInit {
   weatherLocations: WeatherType[] = [];
-  weatherData: any[] = [
-    {city: "Laguna Hills",
-    condition: "Clear",
-    five_day: [
-      {date: "2019-04-13T07:00:00-07:00", min: 53, max: 78},
-      {date: "2019-04-14T07:00:00-07:00", min: 52, max: 73},
-      {date: "2019-04-15T07:00:00-07:00", min: 56, max: 69},
-      {date: "2019-04-16T07:00:00-07:00", min: 51, max: 65},
-      {date: "2019-04-17T07:00:00-07:00", min: 53, max: 74}],
-    forecast: true,
-    state: "CA",
-    temperature: 68,
-    zip_code: 92653},
-    {city: "Orem",
-    condition: "Clear",
-    five_day: [
-      {date: "2019-04-13T07:00:00-06:00", min: 39, max: 53},
-      {date: "2019-04-14T07:00:00-06:00", min: 46, max: 58},
-      {date: "2019-04-15T07:00:00-06:00", min: 44, max: 56},
-      {date: "2019-04-16T07:00:00-06:00", min: 39, max: 48},
-      {date: "2019-04-17T07:00:00-06:00", min: 35, max: 53}],
-    forecast: true,
-    state: "UT",
-    temperature: 52,
-    zip_code: 84059},
-    {city: "Cupertino",
-    condition: "Cloudy",
-    five_day: [],
-    forecast: false,
-    state: "CA",
-    temperature: 63,
-    zip_code: 95014}
-  ];
+  weatherData: any[] = [];
   metric: boolean = false;
 
   constructor(
@@ -50,7 +18,7 @@ export class WeatherDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.fetchLocations();
-    // this.getWeather();
+    this.getWeather();
   }
 
   fetchLocations() {
@@ -100,10 +68,9 @@ export class WeatherDashboardComponent implements OnInit {
             }
           }
         )
-      // push all compiled results from get requests done through for loops (not ideal...) into original array for display on HTML //
+      // push all compiled results from get requests done through for loops (not ideal...but from what I can see you can only return one res at a time from AccuWeather's API) into original array for display on HTML //
       this.weatherData.push(individualWeatherData);
     }
-    console.log(this.weatherData)
   }
 
   metricToggle(event) {

@@ -1,3 +1,16 @@
 .weather-card {
-    max-width: 500px;
+    width: 500px;
+    margin: 4px 4px 4px 4px;
+}
+
+.weather-div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.weather-header {
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
 }
